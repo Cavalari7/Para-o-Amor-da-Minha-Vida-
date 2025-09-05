@@ -1,0 +1,88 @@
+import os
+from zipfile import ZipFile
+
+# Estrutura de pastas
+project_name = "Igor-Samyra"
+img_folder = os.path.join(project_name, "imagens")
+os.makedirs(img_folder, exist_ok=True)
+
+# Conteúdo dos arquivos
+index_html = """<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Igor❤Samyra</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="declaracao">
+    <h1>Para o Amor da Minha Vida</h1>
+    <p>
+      Amor, desde que você entrou na minha vida, tudo ganhou mais cor, mais sentido e mais paz.
+      No dia 04/04/2025, nossos caminhos se cruzaram, e eu nem imaginava que aquele momento mudaria tudo.
+      Depois, em 12/06/2025, começamos a escrever nossa história de amor, e desde então, cada capítulo ao seu lado tem sido inesquecível.
+      Seu sorriso ilumina os meus dias e seu abraço é o lugar onde eu me sinto mais seguro.
+      Eu te amo não só pelo que você é, mas por tudo que somos juntos.
+      Obrigado por ser minha melhor escolha, todos os dias.
+    </p>
+    <img src="imagens/Igor.Samyra.jpg" alt="Igor e Samyra" class="foto-casal">
+  </div>
+</body>
+</html>
+
+style_css = """body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #fff0f5;
+  color: #333;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.declaracao {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  max-width: 600px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.declaracao h1 {
+  color: #d63384;
+}
+
+.declaracao p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.foto-casal {
+  margin-top: 20px;
+  width: 100%;
+  max-width: 400px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+"""
+
+# Cria os arquivos
+with open(os.path.join(project_name, "index.html"), "w", encoding="utf-8") as f:
+    f.write(index_html)
+
+with open(os.path.join(project_name, "style.css"), "w", encoding="utf-8") as f:
+    f.write(style_css)
+
+# Cria o ZIP
+zip_filename = f"{project_name}.zip"
+with ZipFile(zip_filename, "w") as zipf:
+    for root, dirs, files in os.walk(project_name):
+        for file in files:
+            full_path = os.path.join(root, file)
+            arcname = os.path.relpath(full_path, start=project_name)
+            zipf.write(full_path, arcname=os.path.join(project_name, arcname))
+
+print(f"Arquivo ZIP criado: {zip_filename}")

@@ -1,0 +1,43 @@
+body {
+  margin: 0;
+  padding: 0;
+  background: #fffaf0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.declaracao {
+  position: relative;
+  margin: 50px auto;
+  padding: 40px;
+  width: 70%;
+  max-width: 800px;
+  background: #fff;
+  border: 20px solid transparent;
+  border-image: url(https://img.freepik.com/vetores-premium/moldura-quadrada-de-primavera-com-flores-de-girassol-borda-de-vetor-de-verao_458779-1457.jpg) 30 round; /* Substitua se desejar */
+  border-radius: 20px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.declaracao h1 {
+  color: #d6336c;
+  font-size: 2.5em;
+  margin-bottom: 20px;
+}
+
+.declaracao p {
+  font-size: 1.2em;
+  color: #333;
+  line-height: 1.6;
+}
+
+.foto-casal {
+    display: block;            /* Garante que a imagem se comporte como um bloco */
+  margin: 30px auto 0 auto;  /* Centraliza horizontalmente */
+  max-width: 90%;            /* Mantém a imagem dentro da caixa */
+  max-height: 400px;         /* Limita a altura para não estourar a moldura */
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  object-fit: cover;
+
+}
